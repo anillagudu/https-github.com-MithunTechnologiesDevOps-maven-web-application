@@ -17,11 +17,9 @@ stage('code coverage'){
 sh "$mavenHome/bin/mvn sonar:sonar"
 
 }
-/*
 stage('deployed artifactory'){
 sh "$mavenHome/bin/mvn deploy"
 }
-*/
 stage('deployed to tomcat server'){
 sshagent(['8e09da8f-7bcf-4fde-8902-384448820bef']) {
     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@52.55.16.89:/opt/apache-tomcat-8.5.89/webapps"
