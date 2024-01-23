@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://44.197.243.140:8081/repository/Maven-repo-release/</url>
+	      <url>http://3.239.42.20:8081/repository/face-book-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository</name>
-	      <url>http://44.197.243.140:8081/repository/Maven-repo-snapshot/</url>
+	      <url>http://3.239.42.20:8081/repository/face-book-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
