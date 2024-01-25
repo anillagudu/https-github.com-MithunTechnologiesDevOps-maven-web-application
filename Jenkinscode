@@ -1,0 +1,28 @@
+node {
+
+def mavenHome = tool name: "Maven Server 3.9.5"
+
+//get the code from SCM
+stage ('checkout the code') {
+    git credentialsId: '5eedc176-7cce-41a3-9ba7-10cff9a9129c', url: 'https://github.com/anillagudu/maven-web-application.git'
+}
+//build the code
+stage ('code build') {
+  sh "$mavenHome/bin/mvn clean package"
+}
+//Generating the sonarqube report
+stage ('sonarreport'){
+sh "$mavenHome/bin/mvn sonar:sonar"
+}
+//deploy artifact into artifactory
+stage ('deploy the artifactory'){
+    sh "$mavenHome/bin/mvn clean deploy"
+
+}
+//deploy into application server
+stage ('deploy into tomcat'){
+    sshagent(['64b62e60-76e0-43e0-9aa0-7cbde78b518d']) {
+sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@44.198.159.237:/opt/apache-tomcat-8.5.98/webapps"
+}
+}
+}
