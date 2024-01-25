@@ -2,6 +2,10 @@ node {
 
 def mavenHome = tool name: "Maven Server 3.9.5"
 
+echo "The job name is :" ${env.JOB_NAME}
+echo "Build number is :" ${env.BUILD_NUMBER}
+echo "Node name is " :${env.NODE_NAME}
+
 //get the code from SCM
 stage ('checkout the code') {
     git credentialsId: '5eedc176-7cce-41a3-9ba7-10cff9a9129c', url: 'https://github.com/anillagudu/maven-web-application.git'
