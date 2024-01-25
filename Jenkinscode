@@ -10,6 +10,7 @@ stage ('checkout the code') {
 stage ('code build') {
   sh "$mavenHome/bin/mvn clean package"
 }
+/*
 //Generating the sonarqube report
 stage ('sonarreport'){
 sh "$mavenHome/bin/mvn sonar:sonar"
@@ -25,4 +26,5 @@ stage ('deploy into tomcat'){
 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@44.198.159.237:/opt/apache-tomcat-8.5.98/webapps"
 }
 }
+*/
 }
